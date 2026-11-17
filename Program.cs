@@ -1,5 +1,7 @@
 ﻿using MediaSorterWithLinq;
 
+bool exit = false;
+
 #region hardcoded songs
 
 Song neonRain = new Song("Neon Rain on 5th", "The Midnight Static", "Electronic", 1984, 5);
@@ -65,5 +67,57 @@ mainLibrary.AddSong(feverDreamin);
 mainLibrary.AddSong(gravityWell);
 mainLibrary.AddSong(cityOfAsh);
 mainLibrary.AddSong(lastTrainBrighton);
+
+#endregion
+
+#region Main
+
+while (!exit)
+{
+    SongMenu();
+
+}
+
+#endregion
+
+#region functions
+void SongMenu()
+{
+    Console.Clear();
+    Console.WriteLine("---------- Media Center ----------\n");
+    Console.WriteLine("----- Songs Menu -----");
+
+    Console.WriteLine("1. View All Songs");
+    Console.WriteLine("2. Organise Songs");
+    Console.WriteLine("3. View songs with filter");
+    Console.WriteLine("4. Exit");
+
+    Console.WriteLine("\nPlease pick an option using a number : ");
+    string userOption = Console.ReadLine();
+
+    while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4")
+    {
+        Console.WriteLine("Sorry selection not valid, please enter either 1, 2, 3 or 4");
+    }
+
+    switch (userOption)
+    {
+        case "1":
+            ViewAllSongs();
+            break;
+        case "2":
+            break;
+        case "3":
+            break;
+        case "4":
+            exit = true;
+            break;
+    }
+}
+
+void ViewAllSongs()
+{
+    var songsInMain = from song in mainLibrary select song;
+}
 
 #endregion
