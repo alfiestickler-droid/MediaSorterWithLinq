@@ -30,6 +30,9 @@ namespace MediaSorterWithLinq
         public void OrganiseLibrary()
         {
             bool decending = false;
+            Console.Clear();
+            Console.WriteLine("---------- Media Center ----------\n");
+            Console.WriteLine("----- Organise Library -----");
 
             Console.WriteLine("What catagory would you like to order your songs?");
 
@@ -63,24 +66,24 @@ namespace MediaSorterWithLinq
             }
 
 
-            {
-                songs = (userOption switch
-                {
-                    "1" => from song in songs orderby song.Title select song,
-                    "2" => from song in songs orderby song.Artist select song,
-                    "3" => from song in songs orderby song.Genre select song,
-                    "4" => from song in songs orderby song.ReleaseYear select song,
-                    "5" => from song in songs orderby song.Rating select song,
 
-                }).ToList();
-            }
+            songs = (userOption switch
+            {
+                "1" => from song in songs orderby song.Title select song,
+                "2" => from song in songs orderby song.Artist select song,
+                "3" => from song in songs orderby song.Genre select song,
+                "4" => from song in songs orderby song.ReleaseYear select song,
+                "5" => from song in songs orderby song.Rating select song,
+
+            }).ToList();
+
 
             if (decending)
             {
                 songs.Reverse();
             }
 
-            ViewAllSongs();
+            Console.WriteLine("Songs have been reordered.");
         }
 
         //Allows Linq

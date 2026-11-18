@@ -112,6 +112,8 @@ void SongMenu()
             MenuOrExit();
             break;
         case "3":
+            FilterSearch();
+            MenuOrExit();
             break;
         case "4":
             exit = true;
@@ -144,5 +146,75 @@ void MenuOrExit()
     }
 }
 
+void FilterSearch()
+{
+    Console.Clear();
+    Console.WriteLine("---------- Media Center ----------\n");
+    Console.WriteLine("----- Filtered search -----");
 
+    Console.WriteLine("What catagory would you like to filer your songs by?");
+
+    Console.WriteLine("1. Title");
+    Console.WriteLine("2. Artist");
+    Console.WriteLine("3. Genre");
+    Console.WriteLine("4. Release Year");
+    Console.WriteLine("5. Rating");
+
+    Console.WriteLine("\nPlease pick an option using a number : ");
+    string userOption = Console.ReadLine();
+
+    while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4" && userOption != "5")
+    {
+        Console.WriteLine("Sorry selection not valid, please enter either 1, 2, 3, 4 or 5 : ");
+        userOption = Console.ReadLine();
+    }
+
+    switch (userOption)
+    {
+        case "1":
+            
+            Console.Clear();
+            Console.WriteLine("---------- Media Center ----------\n");
+            Console.WriteLine("----- Filtered search -----");
+            Console.WriteLine("Please enter the Title you want : ");
+            string filteredTitle = Console.ReadLine();
+
+            while (string.IsNullOrWhiteSpace(filteredTitle))
+            {
+                Console.WriteLine("Sorry invalid input please enter a song title");
+                filteredTitle = Console.ReadLine();
+            }
+
+            var filteredTitleResult = from song in mainLibrary where song.Title.Contains(filteredTitle, StringComparison.OrdinalIgnoreCase) select song;
+            
+            foreach(var song in filteredTitleResult)
+            {
+                Console.WriteLine("");
+                Console.WriteLine(song.SongInfo());           
+            }
+            break;
+
+        case "2":
+            Console.Clear();
+            Console.WriteLine("---------- Media Center ----------\n");
+            Console.WriteLine("----- Filtered search -----");
+            Console.WriteLine("Please enter the Artist you want : ");
+            string filteredArtist = Console.ReadLine();
+
+            while (string.IsNullOrWhiteSpace(filteredArtist))
+            {
+                Console.WriteLine("Sorry invalid input please enter a song title");
+                filteredTitle = Console.ReadLine();
+            }
+
+            var filteredArtistResult = from song in mainLibrary where song.Title.Contains(filteredArtist, StringComparison.OrdinalIgnoreCase) select song;
+
+            foreach (var song in filteredArtistResult)
+            {
+                Console.WriteLine("");
+                Console.WriteLine(song.SongInfo());
+            }
+            break;
+    }
+}
 #endregion

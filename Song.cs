@@ -27,5 +27,7 @@ namespace MediaSorterWithLinq
         {
             return $"Title : {Title}\n Artist : {Artist}\n Genre : {Genre}\n Release Year : {ReleaseYear}\n Rating : {Rating}\n";
         }
+
+       
     }
 }
