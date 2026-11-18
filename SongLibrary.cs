@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MediaSorterWithLinq;
 
 namespace MediaSorterWithLinq
 {
@@ -17,6 +18,16 @@ namespace MediaSorterWithLinq
         public void AddSong(Song newSong)
         {
             songs.Add(newSong);
+        }
+
+        public void ViewAllSongs()
+        {
+            Console.Clear();
+            Console.WriteLine("----- All Songs -----\n");
+            foreach(Song song in songs)
+            {
+                Console.WriteLine(song.SongInfo());
+            }
         }
     }
 }

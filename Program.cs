@@ -103,7 +103,8 @@ void SongMenu()
     switch (userOption)
     {
         case "1":
-            ViewAllSongs();
+            mainLibrary.ViewAllSongs();
+            MenuOrExit();
             break;
         case "2":
             break;
@@ -115,9 +116,30 @@ void SongMenu()
     }
 }
 
-void ViewAllSongs()
+void MenuOrExit()
 {
-    var songsInMain = from song in mainLibrary select song;
+    Console.WriteLine("\nTo return to menu please type 'menu' or to exit please type 'exit'");
+    string userOption = Console.ReadLine();
+    userOption.ToLower().Trim();
+
+    if (userOption == "exit")
+    {
+        exit = true;
+    }
+    else
+    {
+        while (userOption != "menu" && userOption != "exit")
+        {
+            Console.WriteLine("Sorry not a valid input, please enter menu to return to menu or exit to exit");
+            userOption = Console.ReadLine();
+        }
+
+        if (userOption == "exit")
+        {
+            exit = true;
+        }
+    }
 }
+
 
 #endregion

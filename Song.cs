@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MediaSorterWithLinq;
 
 namespace MediaSorterWithLinq
 {
@@ -20,6 +21,11 @@ namespace MediaSorterWithLinq
             Genre = genre;
             ReleaseYear = releaseYear;
             Rating = rating;
+        }
+
+        public string SongInfo()
+        {
+            return $"Title : {Title}\n Artist : {Artist}\n Genre : {Genre}\n Release Year : {ReleaseYear}\n Rating : {Rating}\n";
         }
     }
 }
