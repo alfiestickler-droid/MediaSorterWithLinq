@@ -98,6 +98,7 @@ void SongMenu()
     while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4")
     {
         Console.WriteLine("Sorry selection not valid, please enter either 1, 2, 3 or 4");
+        userOption = Console.ReadLine();
     }
 
     switch (userOption)
@@ -107,6 +108,8 @@ void SongMenu()
             MenuOrExit();
             break;
         case "2":
+            mainLibrary.OrganiseLibrary();
+            MenuOrExit();
             break;
         case "3":
             break;
