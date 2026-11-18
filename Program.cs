@@ -192,6 +192,12 @@ void FilterSearch()
                 Console.WriteLine("");
                 Console.WriteLine(song.SongInfo());           
             }
+
+            if (!filteredTitleResult.Any())
+            {
+                Console.WriteLine($"Sorry no title with {filteredTitle} could be found");
+            }
+
             break;
 
         case "2":
@@ -203,16 +209,101 @@ void FilterSearch()
 
             while (string.IsNullOrWhiteSpace(filteredArtist))
             {
-                Console.WriteLine("Sorry invalid input please enter a song title");
-                filteredTitle = Console.ReadLine();
+                Console.WriteLine("Sorry invalid input please enter an artist");
+                filteredArtist = Console.ReadLine();
             }
 
-            var filteredArtistResult = from song in mainLibrary where song.Title.Contains(filteredArtist, StringComparison.OrdinalIgnoreCase) select song;
+            var filteredArtistResult = from song in mainLibrary where song.Artist.Contains(filteredArtist, StringComparison.OrdinalIgnoreCase) select song;
 
             foreach (var song in filteredArtistResult)
             {
                 Console.WriteLine("");
                 Console.WriteLine(song.SongInfo());
+            }
+
+            if (!filteredArtistResult.Any())
+            {
+                Console.WriteLine($"Sorry no title with {filteredArtist} could be found");
+            }
+            break;
+
+        case "3":
+            Console.Clear();
+            Console.WriteLine("---------- Media Center ----------\n");
+            Console.WriteLine("----- Filtered search -----");
+            Console.WriteLine("Please enter the Genre you want : ");
+            string filteredGenre = Console.ReadLine();
+
+            while (string.IsNullOrWhiteSpace(filteredGenre))
+            {
+                Console.WriteLine("Sorry invalid input please enter a genre");
+                filteredGenre = Console.ReadLine();
+            }
+
+            var filteredGenreResult = from song in mainLibrary where song.Genre.Contains(filteredGenre, StringComparison.OrdinalIgnoreCase) select song;
+
+            foreach (var song in filteredGenreResult)
+            {
+                Console.WriteLine("");
+                Console.WriteLine(song.SongInfo());
+            }
+
+            if (!filteredGenreResult.Any())
+            {
+                Console.WriteLine($"Sorry no title with {filteredGenre} could be found");
+            }
+            break;
+
+        case "4":
+            Console.Clear();
+            Console.WriteLine("---------- Media Center ----------\n");
+            Console.WriteLine("----- Filtered search -----");
+            Console.WriteLine("Please enter the Release Year you want : ");
+            string filteredRelYear = Console.ReadLine();
+
+            while (string.IsNullOrWhiteSpace(filteredRelYear))
+            {
+                Console.WriteLine("Sorry invalid input please enter a year");
+                filteredRelYear = Console.ReadLine();
+            }
+
+            var filteredRelYearResult = from song in mainLibrary where song.Genre.Contains(filteredRelYear, StringComparison.OrdinalIgnoreCase) select song;
+
+            foreach (var song in filteredRelYearResult)
+            {
+                Console.WriteLine("");
+                Console.WriteLine(song.SongInfo());
+            }
+
+            if (!filteredRelYearResult.Any())
+            {
+                Console.WriteLine($"Sorry no title with {filteredRelYear} could be found");
+            }
+            break;
+
+        case "5":
+            Console.Clear();
+            Console.WriteLine("---------- Media Center ----------\n");
+            Console.WriteLine("----- Filtered search -----");
+            Console.WriteLine("Please enter the rating you want : ");
+            string filteredRating = Console.ReadLine();
+
+            while (string.IsNullOrWhiteSpace(filteredRating))
+            {
+                Console.WriteLine("Sorry invalid input please enter a rating");
+                filteredRating = Console.ReadLine();
+            }
+
+            var filteredRatingResult = from song in mainLibrary where song.Genre.Contains(filteredRating, StringComparison.OrdinalIgnoreCase) select song;
+
+            foreach (var song in filteredRatingResult)
+            {
+                Console.WriteLine("");
+                Console.WriteLine(song.SongInfo());
+            }
+            if (!filteredRatingResult.Any())
+            {
+                Console.WriteLine($"Sorry no title with {filteredRating} could be found");
             }
             break;
     }
